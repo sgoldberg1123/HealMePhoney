@@ -1,4 +1,4 @@
-package healmebaby.healthapp;
+package uwstout.healmebaby;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import static healmebaby.healthapp.R.styleable.Spinner;
+import static uwstout.healmebaby.R.styleable.Spinner;
 
 public class PlannerActivity extends AppCompatActivity {
     public final static String EXTRA_MESSAGE = "healmebaby.healthapp.MESSAGE";

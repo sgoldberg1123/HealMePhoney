@@ -34,6 +34,9 @@
         <activity
             android:name="uwstout.healmebaby.PedometerActivity">
         </activity>
+        <activity
+            android:name="uwstout.healmebaby.PlannerActivity">
+        </activity>
     </application>
 
 </manifest>

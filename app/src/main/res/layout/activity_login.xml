@@ -72,13 +72,6 @@
                 android:text="@string/action_sign_in"
                 android:textStyle="bold" />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:ems="10"
-                android:id="@+id/displayDump"
-                android:text="HTTP GET DUMP" />
 
         </LinearLayout>
     </ScrollView>
