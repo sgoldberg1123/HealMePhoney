@@ -3,6 +3,7 @@ package uwstout.healmebaby;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -362,6 +363,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
+                startMain();
                 finish();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
@@ -374,6 +376,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = null;
             showProgress(false);
         }
+    }
+
+    /** Called when a user clicks the Send button */
+    public void startMain() {
+        //Do something in response to button
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     // HTTP GET request

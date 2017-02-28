@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class MainActivity extends Activity implements SensorEventListener{
+public class PedometerActivity extends Activity implements SensorEventListener{
 
     private SensorManager sensorManager;
     private TextView count;
