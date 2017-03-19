@@ -22,6 +22,6 @@ public class PopRegister extends Activity {
         int width = registerMetrics.widthPixels;
         int height = registerMetrics.heightPixels;
 
-        getWindow().setLayout((int)(width*.8),(int)(height*.6));
+        getWindow().setLayout((int)(width*.9),(int)(height*.7));
     }
 }
