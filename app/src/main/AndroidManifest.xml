@@ -37,6 +37,9 @@
         <activity
             android:name="uwstout.healmebaby.PlannerActivity">
         </activity>
+        <activity android:name=".PopRegister"
+            android:theme="@style/AppTheme.CustomTheme"
+            ></activity>
     </application>
 
 </manifest>
