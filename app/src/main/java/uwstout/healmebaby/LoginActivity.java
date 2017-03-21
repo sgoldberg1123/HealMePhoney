@@ -460,7 +460,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
 
         System.out.println(result.toString());
-        System.out.println("Say HellO!Q!!!");
 
     }
 
