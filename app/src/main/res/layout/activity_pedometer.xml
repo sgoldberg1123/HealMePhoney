@@ -5,16 +5,50 @@
     android:gravity="center" >
 
     <TextView
-        android:textColor="@android:color/white"
+        android:id="@+id/info"
+        android:textSize="25dp"
+        android:textColor="@android:color/black"
         android:layout_width="wrap_content"
-        android:text="Step count since reboot: "
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Steps taken since reboot: "/>
 
     <TextView
         android:id="@+id/count"
         android:textSize="36dp"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="0"/>
 
+    <TextView
+        android:id="@+id/distance"
+        android:textSize="25dp"
+        android:textColor="@android:color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total miles walked: "/>
+
+    <TextView
+        android:id="@+id/dCount"
+        android:textSize="36dp"
+        android:textColor="@android:color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"/>
+
+    <TextView
+        android:id="@+id/calories"
+        android:textSize="25dp"
+        android:textColor="@android:color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total calories burnt: "/>
+
+    <TextView
+        android:id="@+id/cCount"
+        android:textSize="36dp"
+        android:textColor="@android:color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"/>
 </LinearLayout>
