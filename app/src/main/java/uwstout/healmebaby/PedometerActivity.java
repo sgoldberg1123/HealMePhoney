@@ -13,16 +13,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class PedometerActivity extends Activity implements SensorEventListener{
+public class MainActivity extends Activity implements SensorEventListener{
 
     private SensorManager sensorManager;
     private TextView count;
-    boolean activityRunning;
+    private TextView dCount;
+    private TextView cCount;
+    private double AVG_STEP = 2200;
+    private double AVG_WEIGHT = 150;
+    private double C_UNIT = 0.57;
+    boolean activityRunning = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pedometer);
+        setContentView(R.layout.activity_main);
 
         count = (TextView) findViewById(R.id.count);
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -44,12 +49,16 @@ public class PedometerActivity extends Activity implements SensorEventListener{
     protected void onPause() {
         super.onPause();
         activityRunning = false;
+        //stop detecting steps when unregistering the hardware
+        //sensorManager.unregisterListener(this);
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
         if(activityRunning) {
             count.setText(String.valueOf(event.values[0]));
+            dCount.setText(String.valueOf((event.values[0])/AVG_STEP));
+            cCount.setText(String.valueOf(AVG_WEIGHT*C_UNIT*((event.values[0])/AVG_STEP)));
         }
     }
 
@@ -58,3 +67,4 @@ public class PedometerActivity extends Activity implements SensorEventListener{
 
     }
 }
+
