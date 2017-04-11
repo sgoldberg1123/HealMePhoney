@@ -420,20 +420,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
 
         System.out.println(result.toString());
-        System.out.println("Say HellO!Q!!!");
-
     }
 
     // HTTP POST request
     private void sendPost() throws Exception {
 
-        String url = "https://selfsolve.apple.com/wcResults.do";
+        String url = "http://71.95.85.102/api/values";
 
         HttpClient client = new DefaultHttpClient();
         HttpPost post = new HttpPost(url);
 
         // add header
-        post.setHeader("User-Agent", USER_AGENT);
+        // post.setHeader("Authorization", "JWT" + TOKEN);
 
         List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
         urlParameters.add(new BasicNameValuePair("sn", "C02G8416DRJM"));
