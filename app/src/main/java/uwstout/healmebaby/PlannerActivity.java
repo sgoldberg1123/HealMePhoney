@@ -22,6 +22,49 @@ public class PlannerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_planner);
+
+    }
+
+    public void onCheckboxClicked(View view) {
+        // Is the view now checked?
+        boolean checked = ((CheckBox) view).isChecked();
+        // Check which checkbox was clicked
+        /**
+         String days;
+         switch(view.getId()) {
+         case R.id.checkbox_monday:
+
+         if (checked)
+         days += "Monday ";
+         break;
+         case R.id.checkbox_tuesday:
+         if (checked)
+         days += "Tuesday ";
+         break;
+         case R.id.checkbox_wednesday:
+
+         if (checked)
+         days += "Wednesday ";
+         break;
+         case R.id.checkbox_thursday:
+         if (checked)
+         days += "Thursday ";
+         break;
+         case R.id.checkbox_friday:
+
+         if (checked)
+         days += "Friday ";
+         break;
+         case R.id.checkbox_saturday:
+         if (checked)
+         days += "Saturday ";
+         break;
+         case R.id.checkbox_sunday:
+
+         if (checked)
+         days += "Sunday ";
+         break;
+         }**/
     }
 
     public void save_Plan(View view) {
@@ -41,6 +84,7 @@ public class PlannerActivity extends AppCompatActivity {
 
         CharSequence toast_Message = "You just added the plan " + workout_plan_done + " on: ";
 
+
         Intent main_Intent = new Intent(this, MainActivity.class);
         startActivity(main_Intent);
 
@@ -50,6 +94,11 @@ public class PlannerActivity extends AppCompatActivity {
 
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
+    }
+
+    public void back(View view) {
+        Intent back_Intent = new Intent(this, UserProfile.class);
+        startActivity(back_Intent);
     }
 
 }

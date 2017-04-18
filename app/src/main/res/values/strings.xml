@@ -29,4 +29,14 @@
     <string name="prompt_firstname">First Name</string>
     <string name="prompt_lastname">Last Name</string>
     <string name="confirm">Confirm</string>
+
+    <string name="user_add_workout">Add workout</string>
+    <string name="user_calendar">View Calendar</string>
+    <string name="user_enter_workout">Enter workout results</string>
+
+    <string name="filler">FILLER</string>
+    <string name="reps">Reps (Filler)</string>
+    <string name="weight">Weight (Filler)</string>
+
+    <string name="back">Back to profile</string>
 </resources>

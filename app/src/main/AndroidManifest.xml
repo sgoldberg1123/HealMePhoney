@@ -37,6 +37,15 @@
         <activity
             android:name="uwstout.healmebaby.PlannerActivity">
         </activity>
+        <activity
+            android:name="uwstout.healmebaby.UserProfile">
+        </activity>
+        <activity
+            android:name="uwstout.healmebaby.ViewCalendar">
+        </activity>
+        <activity
+            android:name="uwstout.healmebaby.EnterWorkoutResults">
+        </activity>
         <activity android:name=".PopRegister"
             android:theme="@style/AppTheme.CustomTheme"
             ></activity>
