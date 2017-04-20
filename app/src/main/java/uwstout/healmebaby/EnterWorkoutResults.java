@@ -51,16 +51,38 @@ public class EnterWorkoutResults extends AppCompatActivity {
 
         CharSequence toast_Message = "Your results for " + workout_name_added + " have been recorded.";
 
+        EditText workout_Name = (EditText)findViewById(R.id.workout_name);
+        EditText reps_input = (EditText)findViewById(R.id.reps);
+        EditText weight_input = (EditText)findViewById(R.id.weight);
 
-        Intent userProfile_Intent = new Intent(this, UserProfile.class);
-        startActivity(userProfile_Intent);
+        String woValue = workout_Name.getText().toString();
+        String rValue = reps_input.getText().toString();
+        String weValue = weight_input.getText().toString();
 
-        Context context = getApplicationContext();
-        CharSequence text = toast_Message;
-        int duration = Toast.LENGTH_SHORT;
+        List<String> registerValues = new ArrayList<String>();
+        registerValues.add(woValue);
+        registerValues.add(rValue);
+        registerValues.add(weValue);
 
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
+        try {
+            sendPost(registerValues);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if(REG_SUCCESS == true) {
+            Intent userProfile_Intent = new Intent(this, UserProfile.class);
+            startActivity(userProfile_Intent);
+
+            Context context = getApplicationContext();
+            CharSequence text = toast_Message;
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+
+
     }
 
 
@@ -83,7 +105,6 @@ public class EnterWorkoutResults extends AppCompatActivity {
         urlParameters.add(new BasicNameValuePair("email",values.get(0)));
         urlParameters.add(new BasicNameValuePair("firstName", values.get(1)));
         urlParameters.add(new BasicNameValuePair("lastName", values.get(2)));
-        urlParameters.add(new BasicNameValuePair("password", values.get(3)));
 
         post.setEntity(new UrlEncodedFormEntity(urlParameters));
 

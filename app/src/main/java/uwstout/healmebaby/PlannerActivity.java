@@ -90,6 +90,7 @@ public class PlannerActivity extends AppCompatActivity {
         //Do something in response to button
         //EditText editPlan = (EditText) findViewById(R.id.edit_plan);
         //String message = editPlan.getText().toString();
+
         CheckBox checkMonday = (CheckBox) findViewById(R.id.checkbox_monday);
         CheckBox checkTuesday = (CheckBox) findViewById(R.id.checkbox_tuesday);
         CheckBox checkWednesday = (CheckBox) findViewById(R.id.checkbox_wednesday);
@@ -98,12 +99,58 @@ public class PlannerActivity extends AppCompatActivity {
         CheckBox checkSaturday = (CheckBox) findViewById(R.id.checkbox_saturday);
         CheckBox checkSunday = (CheckBox) findViewById(R.id.checkbox_sunday);
 
+
+
         EditText workout_plan_text = (EditText) findViewById(R.id.edit_plan);
         String workout_plan_done = workout_plan_text.getText().toString();
 
-        CharSequence toast_Message = "You just added the plan " + workout_plan_done + " on: ";
+        String toast_Message = "You just added the plan " + workout_plan_done + " on: ";
 
+        if(checkMonday.isChecked())
+        {
+            toast_Message = toast_Message + "Monday ";
+        }
+        if(checkTuesday.isChecked())
+        {
+            toast_Message = toast_Message + "Tuesday ";
+        }
+        if(checkWednesday.isChecked())
+        {
+            toast_Message = toast_Message + "Wednesday ";
+        }
+        if(checkThursday.isChecked())
+        {
+            toast_Message = toast_Message + "Thursday ";
+        }
+        if(checkFriday.isChecked())
+        {
+            toast_Message = toast_Message + "Friday ";
+        }
+        if(checkSaturday.isChecked())
+        {
+            toast_Message = toast_Message + "Saturday ";
+        }
+        if(checkSunday.isChecked())
+        {
+            toast_Message = toast_Message + "Sunday ";
+        }
+/*
+        EditText workout_Name = (EditText)findViewById(R.id.workout_name);
+        EditText days_Input = (EditText)findViewById(R.id.reps);
 
+        String woValue = workout_Name.getText().toString();
+        //String rValue = reps_input.getText().toString();
+
+        List<String> registerValues = new ArrayList<String>();
+        registerValues.add(woValue);
+        //registerValues.add(rValue);
+
+        try {
+            sendPost(registerValues);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+*/
         Intent main_Intent = new Intent(this, MainActivity.class);
         startActivity(main_Intent);
 
