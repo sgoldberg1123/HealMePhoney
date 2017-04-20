@@ -38,6 +38,14 @@
             android:onClick="add_Results"
             android:text="@string/user_enter_workout"
             android:textStyle="bold" />
+        <Button
+            android:id="@+id/workout_Records"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:onClick="workout_Records"
+            android:text="Workout Records"
+            android:textStyle="bold" />
     </LinearLayout>
 
 
