@@ -100,66 +100,67 @@ public class PlannerActivity extends AppCompatActivity {
         CheckBox checkSunday = (CheckBox) findViewById(R.id.checkbox_sunday);
 
 
-
         EditText workout_plan_text = (EditText) findViewById(R.id.edit_plan);
         String workout_plan_done = workout_plan_text.getText().toString();
 
         String toast_Message = "You just added the plan " + workout_plan_done + " on: ";
+        String daysList = "";
 
-        if(checkMonday.isChecked())
-        {
+        if (checkMonday.isChecked()) {
             toast_Message = toast_Message + "Monday ";
+            daysList = daysList + "2";
         }
-        if(checkTuesday.isChecked())
-        {
+        if (checkTuesday.isChecked()) {
             toast_Message = toast_Message + "Tuesday ";
+            daysList = daysList + "3";
         }
-        if(checkWednesday.isChecked())
-        {
+        if (checkWednesday.isChecked()) {
             toast_Message = toast_Message + "Wednesday ";
+            daysList = daysList + "4";
         }
-        if(checkThursday.isChecked())
-        {
+        if (checkThursday.isChecked()) {
             toast_Message = toast_Message + "Thursday ";
+            daysList = daysList + "5";
         }
-        if(checkFriday.isChecked())
-        {
+        if (checkFriday.isChecked()) {
             toast_Message = toast_Message + "Friday ";
+            daysList = daysList + "6";
         }
-        if(checkSaturday.isChecked())
-        {
+        if (checkSaturday.isChecked()) {
             toast_Message = toast_Message + "Saturday ";
+            daysList = daysList + "7";
         }
-        if(checkSunday.isChecked())
-        {
+        if (checkSunday.isChecked()) {
             toast_Message = toast_Message + "Sunday ";
+            daysList = daysList + "1";
         }
-/*
-        EditText workout_Name = (EditText)findViewById(R.id.workout_name);
-        EditText days_Input = (EditText)findViewById(R.id.reps);
+
+        EditText workout_Name = (EditText) findViewById(R.id.edit_plan);
 
         String woValue = workout_Name.getText().toString();
-        //String rValue = reps_input.getText().toString();
 
         List<String> registerValues = new ArrayList<String>();
         registerValues.add(woValue);
-        //registerValues.add(rValue);
+        registerValues.add(daysList);
 
         try {
             sendPost(registerValues);
         } catch (Exception e) {
             e.printStackTrace();
         }
-*/
-        Intent main_Intent = new Intent(this, MainActivity.class);
-        startActivity(main_Intent);
 
-        Context context = getApplicationContext();
-        CharSequence text = toast_Message;
-        int duration = Toast.LENGTH_SHORT;
+        if (REG_SUCCESS == true) {
+            Intent main_Intent = new Intent(this, MainActivity.class);
+            startActivity(main_Intent);
 
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
+            Context context = getApplicationContext();
+            CharSequence text = toast_Message;
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+
     }
 
     public void back(View view) {
@@ -186,8 +187,6 @@ public class PlannerActivity extends AppCompatActivity {
         List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
         urlParameters.add(new BasicNameValuePair("email",values.get(0)));
         urlParameters.add(new BasicNameValuePair("firstName", values.get(1)));
-        urlParameters.add(new BasicNameValuePair("lastName", values.get(2)));
-        urlParameters.add(new BasicNameValuePair("password", values.get(3)));
 
         post.setEntity(new UrlEncodedFormEntity(urlParameters));
 
@@ -209,12 +208,11 @@ public class PlannerActivity extends AppCompatActivity {
         System.out.println(result.toString());
 
         //Tells user that registration is successful
-        if(response.getStatusLine().getStatusCode() == 200) {
+        if (response.getStatusLine().getStatusCode() == 200) {
             REG_SUCCESS = true;
         }
 
     }
-
     public static void connect(String url)
     {
 
@@ -247,5 +245,4 @@ public class PlannerActivity extends AppCompatActivity {
 
         } catch (Exception e) {}
     }
-
 }
