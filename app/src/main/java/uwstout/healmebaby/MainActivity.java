@@ -4,12 +4,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.content.Intent;
-import android.widget.EditText;
-
-import uwstout.healmebaby.DisplayMessageActivity;
-import uwstout.healmebaby.PedometerActivity;
-import uwstout.healmebaby.PlannerActivity;
-import uwstout.healmebaby.R;
 
 
 public class MainActivity extends AppCompatActivity {
