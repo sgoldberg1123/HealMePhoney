@@ -66,3 +66,4 @@ public class PedometerService extends Service {
     }
 
 }
+

@@ -6,6 +6,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.util.Log;
+
 /**
  * Created by Student on 4/23/2017.
  */
@@ -100,4 +101,5 @@ public class PedometerStepDetector implements SensorEventListener {
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
         // TODO Auto-generated method stub
     }
+
 }

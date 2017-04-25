@@ -30,11 +30,6 @@
     <string name="prompt_lastname">Last Name</string>
     <string name="confirm">Confirm</string>
 
-    <string name="prompt_weight">Weight</string>
-    <string name="prompt_height">Height (In Inches)</string>
-    <string name="bmi_display">BMI: </string>
-    <string name="calculate">Calculate</string>
-
     <string name="user_add_workout">Add workout</string>
     <string name="user_calendar">View Calendar</string>
     <string name="user_enter_workout">Enter workout results</string>
