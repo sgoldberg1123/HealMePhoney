@@ -1,0 +1,7 @@
+#Tue Apr 25 00:17:34 CDT 2017
+base.0=D\:\\2017 Spring\\Advanced Software Eng\\HealmePhony\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_3f38896668a67c89d6d0c8953660828ed271d1c4
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=D\:\\2017 Spring\\Advanced Software Eng\\HealmePhony\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_06183bc0da7b4461a963fccc9e9b54e62b1204de\\classes.dex
+base.1=D\:\\2017 Spring\\Advanced Software Eng\\HealmePhony\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_06183bc0da7b4461a963fccc9e9b54e62b1204de
+file.0=D\:\\2017 Spring\\Advanced Software Eng\\HealmePhony\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_3f38896668a67c89d6d0c8953660828ed271d1c4\\classes.dex

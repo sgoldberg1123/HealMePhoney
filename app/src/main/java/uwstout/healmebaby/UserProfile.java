@@ -29,4 +29,8 @@ public class UserProfile extends AppCompatActivity {
         Intent results_Intent = new Intent(this, EnterWorkoutResults.class);
         startActivity(results_Intent);
     }
+    public void workout_Records(View view) {
+        Intent results_Intent = new Intent(this, WorkoutRecords.class);
+        startActivity(results_Intent);
+    }
 }

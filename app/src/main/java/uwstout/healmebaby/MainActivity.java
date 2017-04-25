@@ -4,12 +4,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.content.Intent;
+import android.widget.Button;
 import android.widget.EditText;
-
-import uwstout.healmebaby.DisplayMessageActivity;
-import uwstout.healmebaby.PedometerActivity;
-import uwstout.healmebaby.PlannerActivity;
-import uwstout.healmebaby.R;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -18,20 +16,34 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
-    /** Called when a user clicks the Send button */
-    public void sendMessage(View view) {
-        //Do something in response to button
-        Intent intent = new Intent(this, DisplayMessageActivity.class);
-        EditText editText = (EditText) findViewById(R.id.edit_message);
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
-    }
 
+        Button calcButton = (Button) findViewById(R.id.btn_calculate);
+        calcButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                EditText weightInput = (EditText) findViewById(R.id.input_weight);
+                EditText heightInput = (EditText) findViewById(R.id.input_height);
+                TextView bmiTotal = (TextView) findViewById(R.id.text_bmi_display);
+
+                if (weightInput.getText().toString().matches("") || heightInput.getText().toString().matches("")) {
+                    Toast.makeText(MainActivity.this, "Please enter a weight and height", Toast.LENGTH_SHORT).show();
+                } else {
+                    bmiTotal.setText("BMI: ");
+                    double weight = Double.parseDouble(weightInput.getText().toString());
+                    double height = Double.parseDouble(heightInput.getText().toString());
+
+                    double calcBMI = ((weight) / (height * height)) * 703;
+                    String stringBMI = String.format("%.2f", calcBMI);
+
+                    bmiTotal.append(stringBMI);
+                }
+            }
+        });
+    }
     /** go to the planner page */
-    public void plannerPage(View view) {
-        Intent planner_Intent = new Intent(this, PlannerActivity.class);
+    public void userPage(View view) {
+        Intent planner_Intent = new Intent(this, UserProfile.class);
         startActivity(planner_Intent);
     }
 

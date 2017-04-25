@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Press -->
+    <item android:drawable="@color/btn_bg_pressed" android:state_pressed="true"/>
+    <!-- Unavailable -->
+    <item android:drawable="@color/btn_bg_unen" android:state_enabled="false"/>
+    <!-- Default -->
+    <item android:drawable="@color/btn_bg_en"/>
+
+</selector>

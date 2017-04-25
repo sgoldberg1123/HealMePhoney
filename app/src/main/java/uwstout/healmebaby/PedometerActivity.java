@@ -485,4 +485,3 @@ public class PedometerActivity extends Activity {
     }
 
 }
-
