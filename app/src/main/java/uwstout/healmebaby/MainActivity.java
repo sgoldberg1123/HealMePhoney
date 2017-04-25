@@ -37,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void openPedometer(View view) {
         Intent intent = new Intent(this, PedometerActivity.class);
-        Bundle bundle = new Bundle();
-        intent.putExtras(bundle);
         startActivity(intent);
     }
 }
