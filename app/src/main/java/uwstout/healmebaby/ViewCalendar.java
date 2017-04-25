@@ -46,7 +46,7 @@ public class ViewCalendar extends AppCompatActivity {
 
         StrictMode.setThreadPolicy(policy);
 
-        String url = "http://71.95.85.102/signup";
+        String url = "http://71.95.85.102/api/user/signup";
 
         HttpClient client = new DefaultHttpClient();
         HttpPost post = new HttpPost(url);

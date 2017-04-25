@@ -93,7 +93,7 @@ public class EnterWorkoutResults extends AppCompatActivity {
 
         StrictMode.setThreadPolicy(policy);
 
-        String url = "http://71.95.85.102/signup";
+        String url = "http://71.95.85.102/api/user/signup";
 
         HttpClient client = new DefaultHttpClient();
         HttpPost post = new HttpPost(url);
@@ -104,7 +104,9 @@ public class EnterWorkoutResults extends AppCompatActivity {
         List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
         urlParameters.add(new BasicNameValuePair("email",values.get(0)));
         urlParameters.add(new BasicNameValuePair("firstName", values.get(1)));
-        urlParameters.add(new BasicNameValuePair("lastName", values.get(2)));
+        urlParameters.add(new BasicNameValuePair("lastName", values.get(2)));;
+        urlParameters.add(new BasicNameValuePair("passWord", values.get(2)));
+
 
         post.setEntity(new UrlEncodedFormEntity(urlParameters));
 
