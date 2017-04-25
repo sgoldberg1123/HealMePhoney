@@ -396,7 +396,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     // HTTP GET request
     private void sendGet() throws Exception {
 
-        String url = "http://71.95.85.102/api/values";
+        String url = "http://71.95.85.102/api/user/signup";
 
         HttpClient client = new DefaultHttpClient();
         HttpGet request = new HttpGet(url);
