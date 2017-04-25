@@ -32,8 +32,13 @@
             android:name="uwstout.healmebaby.DisplayMessageActivity">
         </activity>
         <activity
-            android:name="uwstout.healmebaby.PedometerActivity">
-        </activity>
+            android:name="uwstout.healmebaby.PedometerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="uwstout.healmebaby.PedometerSettingsActivity"
+            android:screenOrientation="portrait" />
+
+        <service android:name="uwstout.healmebaby.PedometerService" />
         <activity
             android:name="uwstout.healmebaby.PlannerActivity">
         </activity>

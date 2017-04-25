@@ -39,4 +39,54 @@
     <string name="weight">Weight (Filler)</string>
 
     <string name="back">Back to profile</string>
+
+    <string name="menu_settings">Settings</string>
+    <string name="step_number">Steps</string>
+    <string name="use_time">TIME</string>
+    <string name="distance">Distance</string>
+    <string name="calories">Calories</string>
+    <string name="velocity">Pace</string>
+    <string name="zero">0</string>
+    <string name="double_zero">0.0</string>
+    <string name="calories_zero">0.0</string>
+    <string name="velocity_zero">0.0</string>
+    <string name="km">mi</string>
+    <string name="calorie">cal</string>
+    <string name="kilometer_per_hour">mph</string>
+    <string name="start">Start</string>
+    <string name="pause">Pause</string>
+    <string name="cancel">Cancel</string>
+    <string name="daily">TODAY</string>
+    <string name="image_star">image_star</string>
+    <string name="sunday">SUNDAY</string>
+    <string name="monday">MONDAY</string>
+    <string name="tuesday">TUESDAY</string>
+    <string name="wednesday">WEDNESDAY</string>
+    <string name="thursday">THURSDAY</string>
+    <string name="friday">FRIDAY</string>
+    <string name="saturday">SATURDAY</string>
+    <string name="month">\t--\t</string>
+    <string name="day"> </string>
+    <string name="todo">TODO</string>
+    <string name="information">Info</string>
+    <string name="settings_title">Settings</string>
+    <string name="sensitivity">Sensitivity</string>
+    <string name="low">Low</string>
+    <string name="high">High</string>
+    <string name="sensitivity_info">Please adjust sensitivity according your workout. Set higher
+        sensitivity for less intense workout.</string>
+    <string name="step_length">Step Length</string>
+    <string name="inches">in</string>
+    <string name="setp_length_info_1">Please set step length to estimate your pace and distance.
+        For reference only.</string>
+    <string name="Sweight">Weight</string>
+    <string name="lbs">lbs</string>
+    <string name="weight_info">Please set your body weight.</string>
+    <string name="save">Save</string>
+    <string name="cancle">Cancel</string>
+    <string name="title_activity_start">StartActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+
+
 </resources>
