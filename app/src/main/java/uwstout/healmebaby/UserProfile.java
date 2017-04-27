@@ -33,4 +33,8 @@ public class UserProfile extends AppCompatActivity {
         Intent results_Intent = new Intent(this, WorkoutRecords.class);
         startActivity(results_Intent);
     }
+    public void back_to_main(View view) {
+        Intent back_Intent = new Intent(this, MainActivity.class);
+        startActivity(back_Intent);
+    }
 }
