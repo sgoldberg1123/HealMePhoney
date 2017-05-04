@@ -10,10 +10,12 @@ public class JWTToken extends Application {
 
     private String token;
 
+    // String s = ((JWTToken) this.getApplication()).getToken();
     public String getToken() {
         return token;
     }
 
+    //((JWTToken) this.getApplication()).setToken("string");
     public void setToken(String token) {
         this.token = token;
     }

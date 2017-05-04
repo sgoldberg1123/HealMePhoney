@@ -40,10 +40,12 @@
             android:enabled="true"
             android:exported="true" />
 
+        <application>
+            android:name=".JWTToken">
+        </application>
+
+
         <activity android:name=".PedometerSettingsActivity"></activity>
-    </application>
-    <application>
-        android:name=".JWTToken">
     </application>
 
 </manifest>
