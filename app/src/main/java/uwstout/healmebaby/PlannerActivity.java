@@ -157,6 +157,14 @@ public class PlannerActivity extends AppCompatActivity {
             CharSequence text = toast_Message;
             int duration = Toast.LENGTH_SHORT;
 
+            checkMonday.setChecked(false);
+            checkTuesday.setChecked(false);
+            checkWednesday.setChecked(false);
+            checkThursday.setChecked(false);
+            checkFriday.setChecked(false);
+            checkSaturday.setChecked(false);
+            checkSunday.setChecked(false);
+
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         }
