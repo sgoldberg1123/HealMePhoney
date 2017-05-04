@@ -17,4 +17,9 @@ public class WorkoutRecords extends AppCompatActivity {
         Intent back_Intent = new Intent(this, UserProfile.class);
         startActivity(back_Intent);
     }
+
+    public void makeVisible(View view) {
+        findViewById(R.id.repDisplay).setVisibility(View.VISIBLE);
+        findViewById(R.id.weightDisplay).setVisibility(View.VISIBLE);
+    }
 }
