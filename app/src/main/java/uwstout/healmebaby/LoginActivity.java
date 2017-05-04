@@ -425,7 +425,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     // HTTP POST request
     private void sendPost() throws Exception {
 
-        String url = "http://71.95.85.102/api/values";
+        String url = "http://71.95.85.102/api/user/login";
 
         HttpClient client = new DefaultHttpClient();
         HttpPost post = new HttpPost(url);
@@ -457,6 +457,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             result.append(line);
         }
 
+        ((JWTToken) this.getApplication()).setToken(line);
         System.out.println(result.toString());
 
     }

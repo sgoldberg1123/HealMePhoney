@@ -42,5 +42,8 @@
 
         <activity android:name=".PedometerSettingsActivity"></activity>
     </application>
+    <application>
+        android:name=".JWTToken">
+    </application>
 
 </manifest>
