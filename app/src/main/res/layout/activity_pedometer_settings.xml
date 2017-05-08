@@ -10,10 +10,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:fontFamily="casual"
         android:padding="10dip"
         android:text="@string/settings_title"
-        android:textColor="@android:color/white"
-        android:textSize="25sp" />
+        android:textColor="@color/btn_bg_en"
+        android:textSize="25sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -53,7 +55,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:text="@string/low"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/colorAccent" />
 
         <SeekBar
             android:id="@id/sensitivity"
@@ -76,7 +78,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:text="@string/high"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/colorAccent" />
     </RelativeLayout>
 
     <TextView
@@ -85,7 +87,7 @@
         android:layout_marginLeft="35dip"
         android:layout_marginRight="35dip"
         android:text="@string/sensitivity_info"
-        android:textColor="@android:color/white" />
+        android:textColor="@color/btn_bg_en" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -133,7 +135,7 @@
         android:layout_marginLeft="35dip"
         android:layout_marginRight="35dip"
         android:text="@string/setp_length_info_1"
-        android:textColor="@android:color/white" />
+        android:textColor="@color/btn_bg_en" />
 
 
     <LinearLayout
@@ -179,7 +181,7 @@
         android:layout_marginLeft="35dip"
         android:layout_marginRight="35dip"
         android:text="@string/weight_info"
-        android:textColor="@android:color/white" />
+        android:textColor="@color/btn_bg_en" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -188,7 +190,22 @@
         android:layout_marginRight="35dip"
         android:layout_marginTop="15dip"
         android:paddingBottom="15dip"
-        android:paddingTop="15dip" >
+        android:paddingTop="15dip">
+
+        <Button
+            android:id="@+id/cancle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/btn_bg"
+            android:onClick="onClick"
+            android:paddingBottom="5dip"
+            android:paddingLeft="25dip"
+            android:paddingRight="25dip"
+            android:paddingTop="5dip"
+            android:text="@string/cancle"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
 
         <Button
             android:id="@id/save"
@@ -205,20 +222,6 @@
             android:textColor="@android:color/white"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/cancle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:background="@drawable/btn_bg"
-            android:onClick="onClick"
-            android:paddingBottom="5dip"
-            android:paddingLeft="25dip"
-            android:paddingRight="25dip"
-            android:paddingTop="5dip"
-            android:text="@string/cancle"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
     </RelativeLayout>
 
 </LinearLayout>

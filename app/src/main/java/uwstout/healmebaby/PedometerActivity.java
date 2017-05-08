@@ -1,10 +1,14 @@
 package uwstout.healmebaby;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import com.ant.liao.GifView;
 import com.ant.liao.GifView.GifImageType;
@@ -18,6 +22,7 @@ import android.opengl.Visibility;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,6 +32,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TableRow;
 import android.widget.TextView;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 
 
 /*
@@ -80,6 +93,8 @@ public class PedometerActivity extends Activity {
 
     private TableRow hide1, hide2;
     private TextView step_counter;
+
+    boolean R_SUCCESS = false;
 
 
     Handler handler = new Handler() {
@@ -171,11 +186,11 @@ public class PedometerActivity extends Activity {
                     Context.MODE_PRIVATE);
         }
 
-        Bundle extras = getIntent().getExtras();
+        //Bundle extras = getIntent().getExtras();
         //Pedometer
         gifView = (GifView)findViewById(R.id.gif_view);
         gifView.setGifImageType(GifImageType.COVER);
-        gifView.setShowDimension(100, 100);
+        gifView.setShowDimension(150, 150);
         gifView.setGifImage(R.drawable.walk_gif);
         gifView.showCover();
 
@@ -328,9 +343,10 @@ public class PedometerActivity extends Activity {
         int weekDay = mCalendar.get(Calendar.DAY_OF_WEEK);
         int month = mCalendar.get(Calendar.MONTH) + 1;
         int day = mCalendar.get(Calendar.DAY_OF_MONTH);
+        int year = mCalendar.get(Calendar.YEAR);
 
         tv_date.setText(month + getString(R.string.month) + day
-                + getString(R.string.day));
+                + getString(R.string.day) + year);
 
         String week_day_str = new String();
         switch (weekDay) {
@@ -380,7 +396,7 @@ public class PedometerActivity extends Activity {
         switch (view.getId()) {
             case R.id.start:
                 gifView.showAnimation();
-                startService(service);
+                //startService(service);
                 btn_start.setEnabled(false);
                 btn_stop.setEnabled(true);
                 btn_stop.setText(getString(R.string.pause));
@@ -393,6 +409,21 @@ public class PedometerActivity extends Activity {
                 gifView.showCover();
                 if (PedometerService.FLAG && PedometerStepDetector.CURRENT_STEP > 0) {
                     btn_stop.setText(getString(R.string.cancel));
+
+                    int sValue = PedometerStepDetector.CURRENT_STEP;
+
+                    Calendar mCalendar = Calendar.getInstance();
+                    int m = mCalendar.get(Calendar.MONTH) + 1;
+                    int d = mCalendar.get(Calendar.DAY_OF_MONTH);
+                    int y = mCalendar.get(Calendar.YEAR);
+                    String dValue = y + "-" + m + "-" + d;
+
+                    try {
+                        sendPost(sValue, dValue);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
                 } else {
                     PedometerStepDetector.CURRENT_STEP = 0;
                     tempTime = timer = 0;
@@ -438,7 +469,7 @@ public class PedometerActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.activity_step, menu);
+        getMenuInflater().inflate(R.menu.start, menu);
         return true;
     }
 
@@ -452,6 +483,8 @@ public class PedometerActivity extends Activity {
                 break;
 
             case R.id.menu_information:
+                Intent info_intent = new Intent(this, PedometerInfoActivity.class);
+                startActivity(info_intent);
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -482,6 +515,53 @@ public class PedometerActivity extends Activity {
         // TODO Auto-generated method stub
         super.onBackPressed();
         finish();
+    }
+
+    // HTTP POST request
+    private void sendPost(int step, String date) throws Exception {
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
+
+        String url = "http://71.95.85.102/api/dailystepcount/upsert";
+
+        HttpClient client = new DefaultHttpClient();
+        HttpPost post = new HttpPost(url);
+
+        // add header
+        // post.setHeader("Authorization", "JWT" + TOKEN);
+
+        List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
+        urlParameters.add(new BasicNameValuePair("email",values.get(0)));
+        urlParameters.add(new BasicNameValuePair("firstName", values.get(1)));
+        urlParameters.add(new BasicNameValuePair("lastName", values.get(2)));
+        urlParameters.add(new BasicNameValuePair("password", values.get(3)));
+
+        post.setEntity(new UrlEncodedFormEntity(urlParameters));
+
+        HttpResponse response = client.execute(post);
+        System.out.println("\nSending 'POST' request to URL : " + url);
+        System.out.println("Post parameters : " + post.getEntity());
+        System.out.println("Response Code : " +
+                response.getStatusLine().getStatusCode());
+
+        BufferedReader rd = new BufferedReader(
+                new InputStreamReader(response.getEntity().getContent()));
+
+        StringBuffer result = new StringBuffer();
+        String line = "";
+        while ((line = rd.readLine()) != null) {
+            result.append(line);
+        }
+
+        System.out.println(result.toString());
+
+        //Tells user that registration is successful
+        if(response.getStatusLine().getStatusCode() == 200) {
+            R_SUCCESS = true;
+        }
+
     }
 
 }

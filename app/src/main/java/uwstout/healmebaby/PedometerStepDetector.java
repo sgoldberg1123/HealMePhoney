@@ -6,8 +6,9 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.util.Log;
+
 /**
- * Created by Student on 4/23/2017.
+ * Created by Student on 5/8/2017.
  */
 
 public class PedometerStepDetector implements SensorEventListener {
