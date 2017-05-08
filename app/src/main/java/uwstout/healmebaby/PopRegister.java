@@ -131,9 +131,11 @@ public class PopRegister extends Activity {
         while ((line = rd.readLine()) != null) {
             result.append(line);
         }
+        int end = result.indexOf(",");
 
-        ((JWTToken) this.getApplication()).setToken(line);
+        ((JWTToken) this.getApplication()).setToken(result.substring(9, end - 1));
         System.out.println(result.toString());
+        System.out.println("!!!HEY!!!: " + ((JWTToken) this.getApplication()).getToken());
 
         //Tells user that registration is successful
         if(response.getStatusLine().getStatusCode() == 200) {
