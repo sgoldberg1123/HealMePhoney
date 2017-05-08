@@ -457,7 +457,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             result.append(line);
         }
 
-        ((JWTToken) this.getApplication()).setToken(line);
         System.out.println(result.toString());
 
     }

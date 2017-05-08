@@ -132,6 +132,7 @@ public class PopRegister extends Activity {
             result.append(line);
         }
 
+        ((JWTToken) this.getApplication()).setToken(line);
         System.out.println(result.toString());
 
         //Tells user that registration is successful

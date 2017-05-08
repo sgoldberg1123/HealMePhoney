@@ -5,9 +5,9 @@
     density="xxxhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="676698458183090"
+    timestamp="1034717336523169"
     token="-8990940158100455272"
-    verifier="FULL_BUILD_REQUESTED" >
+    verifier="MANIFEST_FILE_CHANGE" >
 
     <task
         name="javac"
@@ -27,8 +27,8 @@
         type="MAIN" />
 
     <build
-        timestamp="676698458183090"
-        verifier="FULL_BUILD_REQUESTED" >
+        timestamp="1034717336523169"
+        verifier="MANIFEST_FILE_CHANGE" >
         <artifact
             location="D:\School\AndroidProj\HealMeBaby\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
