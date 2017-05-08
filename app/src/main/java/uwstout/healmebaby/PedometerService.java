@@ -9,10 +9,6 @@ import android.os.IBinder;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 
-/**
- * Service support for the pedometer
- */
-
 public class PedometerService extends Service {
 
     public static Boolean FLAG = false;// Check if service is running

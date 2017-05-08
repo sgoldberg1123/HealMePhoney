@@ -36,6 +36,20 @@
         <activity android:name=".WorkoutRecords" />
         <activity android:name=".PedometerActivity" />
 
+        <application
+            android:name=".JWTToken"></application>
+
+        <activity android:name=".PedometerSettingsActivity" />
+        <activity
+            android:name=".PedometerInfoActivity"
+            android:label="@string/title_activity_pedometer_info"
+            android:parentActivityName=".PedometerActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="uwstout.healmebaby.PedometerActivity" />
+        </activity>
+
         <service
             android:name=".PedometerService"
             android:enabled="true"
