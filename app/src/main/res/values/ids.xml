@@ -9,6 +9,8 @@
     <item name="btn_row" type="id"/>
     <item name="start" type="id"/>
     <item name="stop" type="id"/>
+    <item name="settings" type="id" />
+    <item name="view_more" type="id" />
     <item name="send" type="id"/>
     <item name="show_daily" type="id"/>
     <item name="week_day" type="id"/>

@@ -39,7 +39,6 @@
         <application
             android:name=".JWTToken"></application>
 
-        <activity android:name=".PedometerSettingsActivity" />
         <activity
             android:name=".PedometerInfoActivity"
             android:label="@string/title_activity_pedometer_info"
@@ -55,11 +54,9 @@
             android:enabled="true"
             android:exported="true" />
 
-
-
-
-
         <activity android:name=".PedometerSettingsActivity"></activity>
+
+
     </application>
 
 </manifest>

@@ -1,24 +1,9 @@
 package uwstout.healmebaby;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-
-import com.ant.liao.GifView;
-import com.ant.liao.GifView.GifImageType;
-import uwstout.healmebaby.R;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.opengl.Visibility;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -33,13 +18,32 @@ import android.widget.ImageView;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.ant.liao.GifView;
+import com.ant.liao.GifView.GifImageType;
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+import static uwstout.healmebaby.R.id.step;
 
 
 /*
@@ -396,6 +400,20 @@ public class PedometerActivity extends Activity {
         switch (view.getId()) {
             case R.id.start:
                 gifView.showAnimation();
+
+                Calendar mCalendar = Calendar.getInstance();
+                int m1 = mCalendar.get(Calendar.MONTH) + 1;
+                int d1 = mCalendar.get(Calendar.DAY_OF_MONTH);
+                int y1 = mCalendar.get(Calendar.YEAR);
+                String dValue1 = y1 + "-" + m1 + "-" + d1;
+
+                try {
+                    int s = getCurrentStep(dValue1);
+                    tv_show_step.setText(s + "");
+                }
+                catch(Exception ex){
+                }
+
                 //startService(service);
                 btn_start.setEnabled(false);
                 btn_stop.setEnabled(true);
@@ -405,25 +423,23 @@ public class PedometerActivity extends Activity {
                 break;
 
             case R.id.stop:
+                int sValue = PedometerStepDetector.CURRENT_STEP;
+
+                Calendar mCalendar1 = Calendar.getInstance();
+                int m = mCalendar1.get(Calendar.MONTH) + 1;
+                int d = mCalendar1.get(Calendar.DAY_OF_MONTH);
+                int y = mCalendar1.get(Calendar.YEAR);
+                String dValue = y + "-" + m + "-" + d;
+
+                try {
+                    sendPost(sValue, dValue);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 stopService(service);
                 gifView.showCover();
                 if (PedometerService.FLAG && PedometerStepDetector.CURRENT_STEP > 0) {
                     btn_stop.setText(getString(R.string.cancel));
-
-                    int sValue = PedometerStepDetector.CURRENT_STEP;
-
-                    Calendar mCalendar = Calendar.getInstance();
-                    int m = mCalendar.get(Calendar.MONTH) + 1;
-                    int d = mCalendar.get(Calendar.DAY_OF_MONTH);
-                    int y = mCalendar.get(Calendar.YEAR);
-                    String dValue = y + "-" + m + "-" + d;
-
-                    try {
-                        sendPost(sValue, dValue);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-
                 } else {
                     PedometerStepDetector.CURRENT_STEP = 0;
                     tempTime = timer = 0;
@@ -441,6 +457,16 @@ public class PedometerActivity extends Activity {
                     handler.removeCallbacks(thread);
                 }
                 btn_start.setEnabled(true);
+                break;
+
+            case R.id.settings:
+                Intent intent = new Intent(this, PedometerSettingsActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.view_more:
+                Intent info_intent = new Intent(this, PedometerInfoActivity.class);
+                startActivity(info_intent);
                 break;
         }
     }
@@ -517,26 +543,24 @@ public class PedometerActivity extends Activity {
         finish();
     }
 
-    // HTTP POST request
-    private void sendPost(int step, String date) throws Exception {
+
+    private int getCurrentStep(String date) throws Exception {
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
         StrictMode.setThreadPolicy(policy);
 
-        String url = "http://71.95.85.102/api/dailystepcount/upsert";
+        String url = "http://71.95.85.102/api/dailystepcount/date";
 
         HttpClient client = new DefaultHttpClient();
         HttpPost post = new HttpPost(url);
 
-        // add header
-        // post.setHeader("Authorization", "JWT" + TOKEN);
-
         List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
-        urlParameters.add(new BasicNameValuePair("email",values.get(0)));
-        urlParameters.add(new BasicNameValuePair("firstName", values.get(1)));
-        urlParameters.add(new BasicNameValuePair("lastName", values.get(2)));
-        urlParameters.add(new BasicNameValuePair("password", values.get(3)));
+        urlParameters.add(new BasicNameValuePair("date",date));
+
+        //JWT Token Stuff
+        String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTM3fQ.IYwfPbg9GyL7Gn4HZV5-KOD-HjnJIB7xJqqffCXIo38";
+        urlParameters.add(new BasicNameValuePair("JWT", token));
 
         post.setEntity(new UrlEncodedFormEntity(urlParameters));
 
@@ -557,11 +581,110 @@ public class PedometerActivity extends Activity {
 
         System.out.println(result.toString());
 
-        //Tells user that registration is successful
         if(response.getStatusLine().getStatusCode() == 200) {
             R_SUCCESS = true;
         }
 
+        ObjectMapper mapper = new ObjectMapper();
+        try
+        {
+            //PedometerData p = mapper.readValue(result.toString(), PedometerData.class);
+            String s = "{\"daily_step_count_id\":6,\"date\":\"2017-05-08\",\"step_count\":3000,\"user_id\":137}";
+            PedometerData p = mapper.readValue(s, PedometerData.class);
+            int step = p.step_count;
+            System.out.println(step);
+        }
+        catch (JsonGenerationException e)
+        {
+            e.printStackTrace();
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return step;
+    }
+
+    // HTTP POST request
+    private void sendPost(int step, String date) throws Exception {
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
+
+        String url = "http://71.95.85.102/api/dailystepcount/upsert";
+
+        HttpClient client = new DefaultHttpClient();
+        HttpPost post = new HttpPost(url);
+
+        step += 3000;
+
+
+        List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
+        urlParameters.add(new BasicNameValuePair("date",date));
+        urlParameters.add(new BasicNameValuePair("step_count", step + ""));
+
+        //JWT Token Stuff
+        String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTM3fQ.IYwfPbg9GyL7Gn4HZV5-KOD-HjnJIB7xJqqffCXIo38";
+        urlParameters.add(new BasicNameValuePair("JWT", token));
+
+        post.setEntity(new UrlEncodedFormEntity(urlParameters));
+
+        HttpResponse response = client.execute(post);
+        System.out.println("\nSending 'POST' request to URL : " + url);
+        System.out.println("Post parameters : " + post.getEntity());
+        System.out.println("Response Code : " +
+                response.getStatusLine().getStatusCode());
+
+        BufferedReader rd = new BufferedReader(
+                new InputStreamReader(response.getEntity().getContent()));
+
+        StringBuffer result = new StringBuffer();
+        String line = "";
+        while ((line = rd.readLine()) != null) {
+            result.append(line);
+        }
+
+        System.out.println(result.toString());
+
+        if(response.getStatusLine().getStatusCode() == 200) {
+            R_SUCCESS = true;
+        }
+
+    }
+
+    public static void connect(String url)
+    {
+
+        HttpClient httpclient = new DefaultHttpClient();
+
+        // Prepare a request object
+        HttpGet httpget = new HttpGet(url);
+
+        // Execute the request
+        HttpResponse response;
+        try {
+            response = httpclient.execute(httpget);
+            // Examine the response status
+            Log.i("Praeda",response.getStatusLine().toString());
+
+            // Get hold of the response entity
+            HttpEntity entity = response.getEntity();
+            // If the response does not enclose an entity, there is no need
+            // to worry about connection release
+
+            if (entity != null) {
+
+                // A Simple JSON Response Read
+                InputStream instream = entity.getContent();
+                //  String result= convertStreamToString(instream);
+                // now you have the string representation of the HTML request
+                // instream.close();
+            }
+
+
+        } catch (Exception e) {}
     }
 
 }
