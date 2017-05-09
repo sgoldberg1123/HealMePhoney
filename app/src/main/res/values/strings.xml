@@ -95,12 +95,16 @@
     <string name="title_activity_pedometer_info">PedometerInfoActivity</string>
     <string name="info_1">Today you\'ve achieved</string>
     <string name="info_2">%s steps</string>
-    <string name="info_3">%s miles</string>
-    <string name="info_4">%s calories</string>
+    <string name="info_3">%s calories</string>
+    <string name="info_4">%s miles</string>
     <string name="y_info_1">Yesterday, you took</string>
     <string name="y_info_2">%s steps</string>
     <string name="settings">Settings</string>
     <string name="view_more">View More</string>
+    <string name="b_info_1">Sunday, you excercised</string>
+    <string name="b_info_2">%s steps</string>
+    <string name="c_info_1">Saturday, you enjoyed</string>
+    <string name="c_info_2">%s steps</string>
 
 
 </resources>

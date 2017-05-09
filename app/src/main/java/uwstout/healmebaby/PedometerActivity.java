@@ -401,18 +401,18 @@ public class PedometerActivity extends Activity {
             case R.id.start:
                 gifView.showAnimation();
 
-                Calendar mCalendar = Calendar.getInstance();
-                int m1 = mCalendar.get(Calendar.MONTH) + 1;
-                int d1 = mCalendar.get(Calendar.DAY_OF_MONTH);
-                int y1 = mCalendar.get(Calendar.YEAR);
-                String dValue1 = y1 + "-" + m1 + "-" + d1;
-
-                try {
-                    int s = getCurrentStep(dValue1);
-                    tv_show_step.setText(s + "");
-                }
-                catch(Exception ex){
-                }
+//                Calendar mCalendar = Calendar.getInstance();
+//                int m1 = mCalendar.get(Calendar.MONTH) + 1;
+//                int d1 = mCalendar.get(Calendar.DAY_OF_MONTH);
+//                int y1 = mCalendar.get(Calendar.YEAR);
+//                String dValue1 = y1 + "-" + m1 + "-" + d1;
+//
+//                try {
+//                    int s = getCurrentStep(dValue1);
+//                    tv_show_step.setText(s + "");
+//                }
+//                catch(Exception ex){
+//                }
 
                 //startService(service);
                 btn_start.setEnabled(false);
@@ -588,11 +588,10 @@ public class PedometerActivity extends Activity {
         ObjectMapper mapper = new ObjectMapper();
         try
         {
-            //PedometerData p = mapper.readValue(result.toString(), PedometerData.class);
-            String s = "{\"daily_step_count_id\":6,\"date\":\"2017-05-08\",\"step_count\":3000,\"user_id\":137}";
-            PedometerData p = mapper.readValue(s, PedometerData.class);
+            PedometerData p = mapper.readValue(result.toString(), PedometerData.class);
             int step = p.step_count;
             System.out.println(step);
+            System.out.println(p);
         }
         catch (JsonGenerationException e)
         {
@@ -618,7 +617,7 @@ public class PedometerActivity extends Activity {
         HttpClient client = new DefaultHttpClient();
         HttpPost post = new HttpPost(url);
 
-        step += 3000;
+        //step += 3000;
 
 
         List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();

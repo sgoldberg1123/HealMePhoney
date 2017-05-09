@@ -9,4 +9,5 @@ public class PedometerData {
     public String date;
     public int step_count;
     public int user_id;
+
 }

@@ -65,20 +65,64 @@
         android:textColor="@android:color/holo_orange_dark"
         android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/ytxt2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="210dp"
-        android:fontFamily="casual"
-        android:text="@string/y_info_2"
-        android:textAlignment="center"
-        android:textColor="@android:color/holo_orange_dark"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/ytxt2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="210dp"
+            android:fontFamily="casual"
+            android:text="@string/y_info_2"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/btxt1"
+            android:layout_width="310dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="270dp"
+            android:fontFamily="casual"
+            android:text="@string/b_info_1"
+            android:textAllCaps="false"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/btxt2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="310dp"
+            android:fontFamily="casual"
+            android:text="@string/b_info_2"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/ctxt1"
+            android:layout_width="310dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="370dp"
+            android:fontFamily="casual"
+            android:text="@string/c_info_1"
+            android:textAllCaps="false"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="24sp" />
 
 
-
+        <TextView
+                android:id="@+id/ctxt2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="410dp"
+                android:fontFamily="casual"
+                android:text="@string/c_info_2"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_orange_dark"
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
 
 </android.support.design.widget.CoordinatorLayout>
